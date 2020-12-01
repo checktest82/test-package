@@ -20,7 +20,7 @@ FF_profile.set_preference("network.proxy.socks_remote_dns", True) #Make DNS requ
 FF_profile.update_preferences()
 
 
-@app.route("/getIP")
+@app.route("/get")
 def getcurrIp():
     try:
         driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile)
