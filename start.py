@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import os
 
 import os
 app = Flask(__name__)
@@ -27,7 +28,7 @@ FF_profile.update_preferences()
 def getcurrIp():
     try:
         #driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=firefox_binary)
-        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile)
+        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile, executable_path=os.environ.get("GECKODRIVER_PATH"),firefox_binary=FirefoxBinary(os.environ.get("FIREFOX_BIN")))
         driver.get("https://icanhazip.com")
         ipaddr = driver.page_source
         driver.close()
