@@ -11,7 +11,8 @@ import os
 app = Flask(__name__)
 PORT = os.environ.get('PORT') or 5057
 
-firefox_binary = FirefoxBinary('/app/vendor/firefox/firefox')
+#Working Path: /usr/local/bin:/usr/bin:/bin:/app/vendor/:/app/vendor/firefox:/app/vendor/geckodriver
+#firefox_binary = FirefoxBinary('/app/vendor/firefox/firefox')
 FF_options = webdriver.FirefoxOptions()
 FF_profile = webdriver.FirefoxProfile()
 FF_options.add_argument("-headless")
@@ -25,7 +26,8 @@ FF_profile.update_preferences()
 @app.route("/get")
 def getcurrIp():
     try:
-        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=firefox_binary)
+        #driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile, executable_path='/app/vendor/geckodriver/geckodriver', firefox_binary=firefox_binary)
+        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile)
         driver.get("https://icanhazip.com")
         ipaddr = driver.page_source
         driver.close()
