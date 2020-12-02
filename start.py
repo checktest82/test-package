@@ -23,7 +23,7 @@ FF_profile.update_preferences()
 @app.route("/get")
 def getcurrIp():
     try:
-        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile, executable_path='/usr/local/bin/geckodriver')
+        driver = webdriver.Firefox(options=FF_options, firefox_profile=FF_profile, executable_path='/app/vendor/geckodriver/geckodriver')
         driver.get("https://icanhazip.com")
         ipaddr = driver.page_source
         driver.close()
